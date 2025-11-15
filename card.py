@@ -20,7 +20,7 @@ uploaded_file = st.file_uploader('¡Carga tu archivo!', type='xlsx')
 if uploaded_file is not None:
     df=pd.read_excel(uploaded_file)
     buffer=io.BytesIO()
-    c = canvas.Canvas('rprtlab.pdf', pagesize=letter)
+    c = canvas.Canvas(buffer, pagesize=letter)
     for i, fila in df.iterrows():
         draw_card(c, 16*mm, 194*mm, fila)
         draw_card(c, 16*mm, 105*mm, fila)
@@ -35,3 +35,4 @@ if uploaded_file is not None:
         mime='application/pdf',
         icon=':material/download:'
     )
+
