@@ -18,7 +18,7 @@ def draw_card(c, x, y, fila):
 
 uploaded_file = st.file_uploader('¡Carga tu archivo!', type='xlsx')
 if uploaded_file is not None:
-    df=pd.read_excel(uploaded_file)
+    df=pd.read_excel(uploaded_file, dtype={'folio':'string', 'producto':'string'})
     buffer=io.BytesIO()
     c = canvas.Canvas(buffer, pagesize=letter)
     for i, fila in df.iterrows():
@@ -35,4 +35,5 @@ if uploaded_file is not None:
         mime='application/pdf',
         icon=':material/download:'
     )
+
 
